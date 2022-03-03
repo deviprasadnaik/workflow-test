@@ -30,8 +30,15 @@ jobs:
         run: docker --version
 
       # Runs a set of commands using the runners shell
-      - name: Build and push
+      - name: Build 1.17-alpine-fuzz
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Golang/1.17-alpine/Dockerfile
+
+      - name: Build 1.17-alpine
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Golang/1.17-alpine-fuzz/Dockerfile
+      
