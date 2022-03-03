@@ -11,3 +11,4 @@ RUN wget "https://github.com/ory/go-acc/releases/download/v0.2.7/go-acc_0.2.7_li
 RUN tar -xzf go-acc_0.2.7_linux_amd64.tar.gz
 RUN mv go-acc /usr/local/bin
 RUN chmod +x /usr/local/bin/go-acc
+RUN echo test
