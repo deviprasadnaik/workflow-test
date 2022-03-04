@@ -38,4 +38,8 @@ jobs:
           for file in Golang/*; do
           docker build $file/.
           done
+
+      # Runs a single command using the runners shell
+      - name: list docker images
+        run: docker images
       
