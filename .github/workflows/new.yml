@@ -39,6 +39,9 @@ jobs:
           echo "$(basename "$file")"
           echo $file
           cd $file && docker build .
+          pwd
+          cd ../..
+          pwd
           cd $file && docker build .
           #cat $file/Dockerfile
             # if [ -d "$file" ]; then
