@@ -39,6 +39,8 @@ jobs:
           #echo "$(basename "$file")"
           DIR=$(basename "$file")
           echo $DIR
+          cd $DIR && docker build .
+          cd ..
           done
           
 
