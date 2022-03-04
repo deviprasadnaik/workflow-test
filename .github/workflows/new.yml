@@ -36,10 +36,7 @@ jobs:
         name: Build
         run: |
           for file in Golang/*; do
-          #echo "$(basename "$file")"
-          cd $file && docker build .
-          cd ~
-          pwd
+          docker build $file/.
           done
           
 
