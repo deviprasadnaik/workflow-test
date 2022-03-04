@@ -38,7 +38,9 @@ jobs:
           for file in Golang/*; do
           #echo "$(basename "$file")"
           cd $file && docker build .
+          pwd
           cd ..
+          pwd
           done
           
 
