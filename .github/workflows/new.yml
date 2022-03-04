@@ -36,7 +36,9 @@ jobs:
         name: Build
         run: |
           for file in Golang/*; do
-          docker build $file/.
+          #docker build $file/.
+          docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-new $file/.
+          docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest $file/.          
           done
 
       # Runs a single command using the runners shell
