@@ -34,7 +34,7 @@ jobs:
           done
       # Runs a single command using the runners shell
       - name: Log into container registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.DOCKER_SECRET }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image to Github Container Registry
         run: |
