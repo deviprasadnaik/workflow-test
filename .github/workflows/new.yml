@@ -24,16 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: check docker version
-        run: docker --version
-        
-      - uses: docker/setup-buildx-action@v1
-        id: buildx
-        with:
-          install: true
-      -
-        name: Build
+      - name: Build
         run: |
           for file in Golang/*; do
           #docker build $file/.
@@ -41,8 +32,11 @@ jobs:
           docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest $file/.
           docker images -a
           done
-
       # Runs a single command using the runners shell
-      - name: list docker images
-        run: docker images -a
-      
+      - name: Log into container registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Push image to Github Container Registry
+        run: |
+          docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-new
+          docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest
