@@ -37,7 +37,7 @@ jobs:
         run: |
           for file in Golang/*; do
           echo "$(basename "$file")"
-          cat $file/.
+          cat $file/Dockerfile
           done
           #cd $file && docker build .
 
