@@ -35,14 +35,14 @@ jobs:
       -
         name: Build
         run: |
-          #for file in Golang/*; do
-          for file in Golang; do
-          #echo "$(basename "$file")"
+          for file in Golang/*; do
+          echo "$(basename "$file")"
+          echo $file
           #cat $file/Dockerfile
-            if [ -d "$file" ]; then
-             cd $file && docker build .
-             cd ..
-            fi
+            # if [ -d "$file" ]; then
+            #  cd $file && docker build .
+            #  cd ..
+            # fi
           done
           
 
