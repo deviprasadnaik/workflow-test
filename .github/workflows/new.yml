@@ -36,18 +36,9 @@ jobs:
         name: Build
         run: |
           for file in Golang/*; do
-          echo "$(basename "$file")"
-          echo $file
-          cd $file && docker build .
-          pwd
-          cd ../..
-          pwd
-          cd $file && docker build .
-          #cat $file/Dockerfile
-            # if [ -d "$file" ]; then
-            #  cd $file && docker build .
-            #  cd ..
-            # fi
+          #echo "$(basename "$file")"
+          DIR=$(basename "$file")
+          echo $DIR
           done
           
 
