@@ -45,5 +45,6 @@ jobs:
 
       - name: Push image to Github Container Registry
         run: |
-          docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-new
-          docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest
+          #docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-new
+          #docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest
+          docker push ghcr.io/deviprasadnaik/workflow-test/golang:alpine-*
