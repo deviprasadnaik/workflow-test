@@ -22,13 +22,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
       - uses: actions/checkout@v2
+
+      - name: get latest sha of 8 digits.
+        run: echo "GITHUB_SHA_SHORT=$(git rev-parse HEAD | cut -c 33-40)" >> $GITHUB_ENV
 
       - name: Build
         run: |
           for file in Golang/*; do
           #docker build $file/.
-          docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-new $file/.
+          docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-${{ env.GITHUB_SHA_SHORT }} $file/.
           docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest $file/.
           docker images -a
           done
@@ -45,5 +49,5 @@ jobs:
 
       - name: Push image to Github Container Registry
         run: |
-          docker images -a
+          #docker images -a
           docker image push --all-tags ghcr.io/deviprasadnaik/workflow-test/golang
