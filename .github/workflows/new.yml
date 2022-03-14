@@ -35,7 +35,12 @@ jobs:
           cd Golang
           for file in */; do
           echo $file
-          #if [ $file -eq ]
+          if [ $file -eq 1.17-alpine-fuzz/]
+          then
+            docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-fuzz${{ env.GITHUB_SHA_SHORT }} .
+          elif [ $file -eq 1.17-alpine/]
+            docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-${{ env.GITHUB_SHA_SHORT }} .
+          fi
           #docker build $file/.
           # docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-${{ env.GITHUB_SHA_SHORT }} $file/.
           # docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest $file/.
