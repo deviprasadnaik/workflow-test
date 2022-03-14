@@ -33,23 +33,24 @@ jobs:
       - name: Build
         run: |
           for file in Golang/*; do
+          echo $file
           #docker build $file/.
-          docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-${{ env.GITHUB_SHA_SHORT }} $file/.
-          docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest $file/.
-          docker images -a
+          # docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-${{ env.GITHUB_SHA_SHORT }} $file/.
+          # docker build -t ghcr.io/deviprasadnaik/workflow-test/golang:alpine-latest $file/.
+          # docker images -a
           done
       # Runs a single command using the runners shell
       # - name: Log into container registry
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Login to GitHub Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          registry: ghcr.io
-          username: deviprasadnaik
-          password: ${{ secrets.DOCKER_SECRET }}
+      # - name: Login to GitHub Container registry
+      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      #   with:
+      #     registry: ghcr.io
+      #     username: deviprasadnaik
+      #     password: ${{ secrets.DOCKER_SECRET }}
 
-      - name: Push image to Github Container Registry
-        run: |
-          #docker images -a
-          docker image push --all-tags ghcr.io/deviprasadnaik/workflow-test/golang
+      # - name: Push image to Github Container Registry
+      #   run: |
+      #     #docker images -a
+      #     docker image push --all-tags ghcr.io/deviprasadnaik/workflow-test/golang
